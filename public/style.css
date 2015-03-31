@@ -12,7 +12,6 @@ html {
 header {
   position: relative;
   top: 0px;
-  height: 2em;
   width: 700px;
   margin-right: auto;
   margin-left: auto;
@@ -31,7 +30,7 @@ header {
   padding: 1px;
 }
 
-button {
+button, input[type=submit] {
   border-radius: 3px;
   text-shadow: 1px 1px 1px #222;
   padding: 5px;
@@ -44,8 +43,14 @@ button {
   border: 0px;
 }
 
-button:hover {
+button:hover, input[type=submit]:hover {
   text-shadow: 0px 0px 0px #222;
   background: #00509d;
   color: white;
+}
+
+article {
+  max-width: 700px;
+  margin-right: auto;
+  margin-left: auto;
 }
