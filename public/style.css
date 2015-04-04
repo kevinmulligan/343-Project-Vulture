@@ -1,4 +1,4 @@
-html {
+html * {
   font-family: 'Oswald', sans-serif;
 }
 
@@ -15,6 +15,7 @@ header {
   width: 700px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 15px;
   padding-top: 20px;
 }
 
@@ -28,12 +29,15 @@ header {
 
 #account-buttons {
   padding: 1px;
+  vertical-align: 4px;
 }
 
-button, input[type=submit] {
+#sign-up, #log-in, input[type=submit] {
+  text-decoration: none;
   border-radius: 3px;
   text-shadow: 1px 1px 1px #222;
-  padding: 5px;
+  padding: 8px;
+  margin-left: 10px;
   font-size: 1.5em;
   font-weight: bold;
   background: #00509d;
@@ -43,7 +47,7 @@ button, input[type=submit] {
   border: 0px;
 }
 
-button:hover, input[type=submit]:hover {
+#sign-up:hover, #log-in:hover, button:hover, input[type=submit]:hover {
   text-shadow: 0px 0px 0px #222;
   background: #00509d;
   color: white;
@@ -53,4 +57,41 @@ article {
   max-width: 700px;
   margin-right: auto;
   margin-left: auto;
+}
+
+/*********************** TUTOR & PRODUCT *******************************/
+section {
+  width: 700px;
+  margin: 0px auto;
+}
+
+.tutor, .product {
+  position: relative;
+}
+
+.daily {
+  padding: 1em;
+  margin: 1em 0px;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+
+.tutor > img, .product > img {
+  max-height: 100px;
+  min-height: 100px;
+  margin-right: 1em;
+}
+
+.description {
+  float:right;
+  width:500px;
+}
+.price {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  display: block;
+}
+.price:before {
+  content:'$';
 }
