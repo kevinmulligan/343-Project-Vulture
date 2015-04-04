@@ -45,6 +45,7 @@ var makeProduct = function(product){
   ele.appendChild(rating);
   // add price
   var price = document.createElement('a');
+  price.setAttribute('href','product.html?id='+product.id);
   var priceText = document.createTextNode(product.price);
   price.setAttribute('class','price');
   price.appendChild(priceText);
@@ -80,6 +81,7 @@ var makeTutor = function(tutor){
   ele.appendChild(rating);
   // add price
   var price = document.createElement('a');
+  price.setAttribute('href','tutor.html?id='+tutor.id);
   var priceText = document.createTextNode(tutor.hourly_cost);
   price.setAttribute('class','hourly');
   price.appendChild(priceText);

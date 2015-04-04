@@ -67,53 +67,23 @@ section {
   width: 700px;
   margin: 0px auto;
 }
-
-.item {
-  position: relative;
-  height: 100px;
-}
-
-.daily {
-  padding: 1em;
-  margin: 1em 0px;
-  box-shadow: 2px 2px 3px gray;
-  background:rgb(251, 248, 235)
-}
-.item > img {
-  max-height: 100px;
-  min-height: 100px;
-  margin-right: 1em;
-  float:left;
-}
-.daily * > .name {
-  color: white;
-  text-shadow:1px 1px 3px black;
-}
-.name {
-  float:left;
-  font-size: 1.2em;
+#name {
+  font-size: 2em;
+  padding: 0px 1em;
   font-weight: bold;
 }
-.description {
-  float:right;
-  width: 430px;
-  position: absolute;
-  left: 108px;
-  bottom: 1.5em;
-  overflow: hidden;
-  height: 50px;
+#image {
 }
-.price, .hourly {
-  text-decoration: none;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
+#description {
+}
+#buy {
   display: block;
   text-align: center;
   background: rgb(147, 212, 147);
   border-radius: 3px;
   padding: 0.2em 1em;
   cursor: pointer;
+  margin-top: 2em;
 
   background: rgb(44, 206, 44);
   background: -webkit-linear-gradient(rgb(44, 206, 44), rgb(0, 180, 0)); /* For Safari 5.1 to 6.0 */
@@ -125,21 +95,13 @@ section {
   text-shadow: 1px 1px 2px rgb(0, 0, 0);
   box-shadow: 1px 1px 2px black;
 }
-.daily * > .price, .daily * > .hourly {
-  padding: 0.5em 1em;
-}
-.rating {
+#rating {
   color: #dddd00;
   position: absolute;
   bottom: 0px;
   left: 108px;
 }
-.item + .item {
-  margin: 0.5em 0px;
-  padding: 0.5em 0px;
-  border-top: 1px solid gray;
-}
-.price:hover:active, .hourly:hover:active {
+#buy:hover:active {
   background: rgb(0, 180, 0);
   background: -webkit-linear-gradient(rgb(0, 180, 0), rgb(44, 206, 44)); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(rgb(0, 180, 0), rgb(44, 206, 44)); /* For Opera 11.1 to 12.0 */
@@ -147,17 +109,10 @@ section {
   background: linear-gradient(rgb(0, 180, 0), rgb(44, 206, 44)); /* Standard syntax */
   text-shadow: 0px 0px 0px black;
 }
-.price:hover, .hourly:hover {
+#buy:hover {
   background: rgb(44, 206, 44);
 }
-.price:before {
+#buy:before {
   content:'purchase now \A$';
   white-space:pre;
-}
-.hourly:before {
-  content:'schedule now \A$';
-  white-space:pre;
-}
-.hourly:after {
-  content:' / hour';
 }
