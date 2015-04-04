@@ -196,7 +196,7 @@ DROP TABLE IF EXISTS `Vulture`.`Schedule` ;
 
 CREATE  TABLE IF NOT EXISTS `Vulture`.`Schedule` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
-  `TutorID` INT NULL ,
+  `TutorID` INT UNSIGNED NULL ,
   `StartDateTime` DATETIME NULL ,
   `Length` INT NULL ,
   `EventName` VARCHAR(50) NULL ,
