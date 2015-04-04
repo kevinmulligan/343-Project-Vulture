@@ -68,6 +68,18 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `Vulture`.`Accent`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`Accent` ;
+
+CREATE  TABLE IF NOT EXISTS `Vulture`.`Accent` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `Vulture`.`Users`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Vulture`.`Users` ;
@@ -86,6 +98,7 @@ CREATE  TABLE IF NOT EXISTS `Vulture`.`Users` (
   `Age` INT UNSIGNED NULL ,
   `Sexuality` INT UNSIGNED NULL ,
   `Gender` INT UNSIGNED NULL ,
+  `Accent` INT UNSIGNED NULL ,
   `Tutor` INT UNSIGNED NULL ,
   `Active` TINYINT(1) NULL ,
   `DateCreated` DATETIME NULL ,
@@ -95,6 +108,7 @@ CREATE  TABLE IF NOT EXISTS `Vulture`.`Users` (
   INDEX `fk_Users_Gender1_idx` (`Gender` ASC) ,
   INDEX `fk_Users_Sexuality1_idx` (`Sexuality` ASC) ,
   INDEX `fk_Users_Tutor1_idx` (`Tutor` ASC) ,
+  INDEX `fk_Users_Accent_idx` (`Accent` ASC) ,
   CONSTRAINT `fk_Users_Gender`
     FOREIGN KEY (`Gender` )
     REFERENCES `Vulture`.`Gender` (`id` )
@@ -108,6 +122,11 @@ CREATE  TABLE IF NOT EXISTS `Vulture`.`Users` (
   CONSTRAINT `fk_Users_Tutor`
     FOREIGN KEY (`Tutor` )
     REFERENCES `Vulture`.`Tutor` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Users_Accent`
+    FOREIGN KEY (`Accent` )
+    REFERENCES `Vulture`.`Accent` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
