@@ -2,6 +2,9 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+DROP SCHEMA IF EXISTS `Vulture` ;
+CREATE SCHEMA IF NOT EXISTS `Vulture` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `Vulture` ;
 
 -- -----------------------------------------------------
 -- Table `Vulture`.`Gender`
@@ -151,8 +154,8 @@ CREATE  TABLE IF NOT EXISTS `Vulture`.`TutorOrder` (
   `LengthHours` INT NULL ,
   `TotalCost` DECIMAL(10,2) NULL ,
   `Comments` LONGTEXT NULL ,
-  `UserID` INT NULL ,
-  `TutorID` INT NULL ,
+  `UserID` INT UNSIGNED NOT NULL ,
+  `TutorID` INT UNSIGNED NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_TutorOrder_Tutor1_idx` (`TutorID` ASC) ,
   INDEX `fk_TutorOrder_Users1_idx` (`UserID` ASC) ,
@@ -347,6 +350,7 @@ CREATE  TABLE IF NOT EXISTS `Vulture`.`OrderItems` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+USE `Vulture` ;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
