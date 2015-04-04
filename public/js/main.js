@@ -18,12 +18,19 @@ var dailyTutor = {
 }
 
 var makeProduct = function(product){
+  // pass in a product object, it will create the element for it
   var ele = document.createElement('div');
-  ele.setAttribute('class','product');
+  ele.setAttribute('class','product item');
   // add image
   var img = document.createElement('img');
   img.setAttribute('src',product.imageURL);
   ele.appendChild(img);
+  // add name
+  var name = document.createElement('span');
+  name.setAttribute('class','name');
+  var nameText = document.createTextNode(product.name);
+  name.appendChild(nameText);
+  ele.appendChild(name);
   // add description
   var des = document.createElement('span');
   des.setAttribute('class','description');
@@ -32,7 +39,8 @@ var makeProduct = function(product){
   ele.appendChild(des);
   // add rating
   var rating = document.createElement('span');
-  var ratingText = document.createTextNode(new Array( Number(product.rating) + 1 ).join('★'));
+  var ratingText = document.createTextNode(new Array( Number(product.rating) + 1 ).join('★') + " " + product.rating + "/5");
+  rating.setAttribute('class','rating');
   rating.appendChild(ratingText);
   ele.appendChild(rating);
   // add price
@@ -45,12 +53,19 @@ var makeProduct = function(product){
 }
 
 var makeTutor = function(tutor){
+  // pass in a product object, it will create the element for it
   var ele = document.createElement('div');
-  ele.setAttribute('class','tutor');
+  ele.setAttribute('class','tutor item');
   // add image
   var img = document.createElement('img');
   img.setAttribute('src',tutor.imageURL);
   ele.appendChild(img);
+  // add name
+  var name = document.createElement('span');
+  name.setAttribute('class','name');
+  var nameText = document.createTextNode(tutor.name);
+  name.appendChild(nameText);
+  ele.appendChild(name);
   // add description
   var des = document.createElement('span');
   des.setAttribute('class','description');
@@ -59,13 +74,14 @@ var makeTutor = function(tutor){
   ele.appendChild(des);
   // add rating
   var rating = document.createElement('span');
-  var ratingText = document.createTextNode(new Array( Number(tutor.rating) + 1 ).join('★'));
+  var ratingText = document.createTextNode(new Array( Number(tutor.rating) + 1 ).join('★') + " " + tutor.rating + "/5");
+  rating.setAttribute('class','rating');
   rating.appendChild(ratingText);
   ele.appendChild(rating);
   // add price
   var price = document.createElement('a');
   var priceText = document.createTextNode(tutor.hourly_cost);
-  price.setAttribute('class','price');
+  price.setAttribute('class','hourly');
   price.appendChild(priceText);
   ele.appendChild(price);
   return ele;
@@ -74,4 +90,8 @@ var makeTutor = function(tutor){
 var documentLoaded = function(){
   document.getElementById('daily-product').appendChild(makeProduct(dailyProduct));
   document.getElementById('daily-tutor').appendChild(makeTutor(dailyTutor));
+  document.getElementById('items').appendChild(makeProduct(dailyProduct));
+  document.getElementById('items').appendChild(makeProduct(dailyProduct));
+  document.getElementById('items').appendChild(makeTutor(dailyTutor));
+  document.getElementById('items').appendChild(makeProduct(dailyProduct));
 }
