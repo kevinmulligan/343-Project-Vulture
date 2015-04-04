@@ -192,11 +192,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Vulture`.`PurchaseMethords`
+-- Table `Vulture`.`PurchaseMethods`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Vulture`.`PurchaseMethords` ;
+DROP TABLE IF EXISTS `Vulture`.`PurchaseMethods` ;
 
-CREATE  TABLE IF NOT EXISTS `Vulture`.`PurchaseMethords` (
+CREATE  TABLE IF NOT EXISTS `Vulture`.`PurchaseMethods` (
   `UserID` INT UNSIGNED NULL ,
   `WalletAddress` VARCHAR(255) NULL ,
   INDEX `UserID_idx` (`UserID` ASC) ,
