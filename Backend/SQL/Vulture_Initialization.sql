@@ -310,7 +310,7 @@ DROP TABLE IF EXISTS `Vulture`.`TutorSubjects` ;
 
 CREATE  TABLE IF NOT EXISTS `Vulture`.`TutorSubjects` (
   `TutorID` INT UNSIGNED NOT NULL ,
-  `SubjectID` INT NOT NULL ,
+  `SubjectID` INT UNSIGNED NOT NULL ,
   INDEX `fk_TutorSubjects_Subject1_idx` (`SubjectID` ASC) ,
   CONSTRAINT `fk_TutorSubjects_SubjectID`
     FOREIGN KEY (`SubjectID` )
