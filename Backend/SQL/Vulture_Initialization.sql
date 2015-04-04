@@ -6,6 +6,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Table `Vulture`.`Gender`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`Gender` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`Gender` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `Name` VARCHAR(45) NULL ,
@@ -16,6 +18,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`Sexuality`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`Sexuality` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`Sexuality` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `Name` VARCHAR(45) NULL ,
@@ -26,6 +30,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`HairColor`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`HairColor` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`HairColor` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `Name` VARCHAR(45) NULL ,
@@ -36,6 +42,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`Tutor`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`Tutor` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`Tutor` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `CostPerHour` DECIMAL(10,2) NULL ,
@@ -43,7 +51,7 @@ CREATE  TABLE IF NOT EXISTS `Vulture`.`Tutor` (
   `Description` LONGTEXT NULL ,
   `Height` INT NULL ,
   `Weight` INT NULL ,
-  `HairColor` INT NOT NULL ,
+  `HairColor` INT UNSIGNED NOT NULL ,
   `HasTattoos` TINYINT(1) NULL ,
   `Active` TINYINT(1) NULL ,
   PRIMARY KEY (`id`) ,
@@ -59,6 +67,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`Users`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`Users` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`Users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `Username` VARCHAR(40) NULL ,
@@ -103,6 +113,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`UserImage`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`UserImage` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`UserImage` (
   `UserID` INT UNSIGNED NOT NULL ,
   `ImagePath` VARCHAR(64) NOT NULL ,
@@ -118,6 +130,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`Subject`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`Subject` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`Subject` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NULL ,
@@ -128,6 +142,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`TutorOrder`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`TutorOrder` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`TutorOrder` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `Date` DATETIME NULL ,
@@ -156,6 +172,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`PurchaseMethords`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`PurchaseMethords` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`PurchaseMethords` (
   `UserID` INT UNSIGNED NULL ,
   `WalletAddress` VARCHAR(255) NULL ,
@@ -171,6 +189,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`Schedule`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`Schedule` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`Schedule` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `TutorID` INT NULL ,
@@ -191,6 +211,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`Products`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`Products` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`Products` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `Name` VARCHAR(45) NULL ,
@@ -205,6 +227,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`ProductImage`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`ProductImage` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`ProductImage` (
   `productID` INT UNSIGNED NOT NULL ,
   `ImagePath` VARCHAR(45) NOT NULL ,
@@ -219,6 +243,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`ProductOrder`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`ProductOrder` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`ProductOrder` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `ProductID` INT UNSIGNED NULL ,
@@ -240,6 +266,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`Ratings`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`Ratings` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`Ratings` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `Rating` DOUBLE NULL ,
@@ -275,6 +303,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`TutorSubjects`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`TutorSubjects` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`TutorSubjects` (
   `TutorID` INT UNSIGNED NOT NULL ,
   `SubjectID` INT NOT NULL ,
@@ -295,6 +325,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Vulture`.`OrderItems`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`OrderItems` ;
+
 CREATE  TABLE IF NOT EXISTS `Vulture`.`OrderItems` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `ProductID` INT UNSIGNED NULL ,
