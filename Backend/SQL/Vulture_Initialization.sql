@@ -31,43 +31,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Vulture`.`HairColor`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `Vulture`.`HairColor` ;
-
-CREATE  TABLE IF NOT EXISTS `Vulture`.`HairColor` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
-  `Name` VARCHAR(45) NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `Vulture`.`Tutor`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `Vulture`.`Tutor` ;
-
-CREATE  TABLE IF NOT EXISTS `Vulture`.`Tutor` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
-  `CostPerHour` DECIMAL(10,2) NULL ,
-  `Rating` INT NULL ,
-  `Description` LONGTEXT NULL ,
-  `Height` INT NULL ,
-  `Weight` INT NULL ,
-  `HairColor` INT UNSIGNED NOT NULL ,
-  `HasTattoos` TINYINT(1) NULL ,
-  `Active` TINYINT(1) NULL ,
-  PRIMARY KEY (`id`) ,
-  INDEX `fk_Tutor_HairColor1_idx` (`HairColor` ASC) ,
-  CONSTRAINT `fk_Tutor_HairColor`
-    FOREIGN KEY (`HairColor` )
-    REFERENCES `Vulture`.`HairColor` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `Vulture`.`Accent`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Vulture`.`Accent` ;
@@ -99,15 +62,13 @@ CREATE  TABLE IF NOT EXISTS `Vulture`.`Users` (
   `Sexuality` INT UNSIGNED NULL ,
   `Gender` INT UNSIGNED NULL ,
   `Accent` INT UNSIGNED NULL ,
-  `Tutor` INT UNSIGNED NULL ,
   `Active` TINYINT(1) NULL ,
-  `DateCreated` DATETIME NULL ,
+  `DateCreated` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `UserName_UNIQUE` (`Username` ASC) ,
   UNIQUE INDEX `Email_UNIQUE` (`Email` ASC) ,
   INDEX `fk_Users_Gender1_idx` (`Gender` ASC) ,
   INDEX `fk_Users_Sexuality1_idx` (`Sexuality` ASC) ,
-  INDEX `fk_Users_Tutor1_idx` (`Tutor` ASC) ,
   INDEX `fk_Users_Accent_idx` (`Accent` ASC) ,
   CONSTRAINT `fk_Users_Gender`
     FOREIGN KEY (`Gender` )
@@ -117,11 +78,6 @@ CREATE  TABLE IF NOT EXISTS `Vulture`.`Users` (
   CONSTRAINT `fk_Users_Sexuality`
     FOREIGN KEY (`Sexuality` )
     REFERENCES `Vulture`.`Sexuality` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Users_Tutor`
-    FOREIGN KEY (`Tutor` )
-    REFERENCES `Vulture`.`Tutor` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Users_Accent`
@@ -142,6 +98,50 @@ CREATE  TABLE IF NOT EXISTS `Vulture`.`UserImage` (
   `ImagePath` VARCHAR(64) NOT NULL ,
   INDEX `UserID_idx` (`UserID` ASC) ,
   CONSTRAINT `fk_UserImage_User_ID`
+    FOREIGN KEY (`UserID` )
+    REFERENCES `Vulture`.`Users` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vulture`.`HairColor`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`HairColor` ;
+
+CREATE  TABLE IF NOT EXISTS `Vulture`.`HairColor` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(45) NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vulture`.`Tutor`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Vulture`.`Tutor` ;
+
+CREATE  TABLE IF NOT EXISTS `Vulture`.`Tutor` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `CostPerHour` DECIMAL(10,2) NULL ,
+  `Rating` INT NULL ,
+  `Description` LONGTEXT NULL ,
+  `Height` INT NULL ,
+  `Weight` INT NULL ,
+  `HairColor` INT UNSIGNED NOT NULL ,
+  `HasTattoos` TINYINT(1) NULL ,
+  `Active` TINYINT(1) NULL ,
+  `UserID` INT UNSIGNED NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_Tutor_HairColor1_idx` (`HairColor` ASC) ,
+  INDEX `fk_Tutor_UserID_idx` (`UserID` ASC) ,
+  CONSTRAINT `fk_Tutor_HairColor`
+    FOREIGN KEY (`HairColor` )
+    REFERENCES `Vulture`.`HairColor` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Tutor_UserID`
     FOREIGN KEY (`UserID` )
     REFERENCES `Vulture`.`Users` (`id` )
     ON DELETE NO ACTION
