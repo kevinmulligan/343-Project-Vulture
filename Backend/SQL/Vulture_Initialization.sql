@@ -240,7 +240,7 @@ CREATE  TABLE IF NOT EXISTS `Vulture`.`Products` (
   `Name` VARCHAR(45) NULL ,
   `Description` LONGTEXT NULL ,
   `Rating` INT NULL ,
-  `Qantity` INT NULL ,
+  `Quantity` INT NULL ,
   `Cost` DECIMAL(10,2) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
