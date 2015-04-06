@@ -4,7 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index
-POST	/login			    controllers.Login.login
+POST	/login			    controllers.Login.login #{"username":"USERNAME", "password","PASSWORD"} look how secure that is!!! LOL
 GET	/logout			    controllers.Login.logout
 
 # Map static resources from the /public folder to the /assets URL path
