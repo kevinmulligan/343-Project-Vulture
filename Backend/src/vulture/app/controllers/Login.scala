@@ -41,6 +41,12 @@ object Login extends Controller {
     Ok(response).withSession("connected" -> session)
   }
 
-
+  def logout = Action { request =>
+    request.session.get("connected").map { user =>
+      Ok("Hello " + user).withNewSession
+    }.getOrElse {
+      Unauthorized("Oops, you are not connected")
+    }
+  }
 
 }
