@@ -10,5 +10,7 @@ POST	/login			    controllers.Login.login
 GET	/logout			    controllers.Login.logout
 GET	/users			    controllers.Users.info
 GET	/home			    controllers.Home.info
+GET	/product/:id		    controllers.Product.getProduct(id: Int)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
