@@ -18,7 +18,7 @@ object Home extends Controller {
       val tutors = scala.collection.mutable.Buffer[JsValue]()
       try {
           val stmt = conn.createStatement
-          val rs = stmt.executeQuery("select p.Name, p.Description, p.Rating, p.Quantity, p.Cost, i.imagePath from Products as p inner join ProductImage as i on i.productID = p.id")
+          var rs = stmt.executeQuery("select p.Name, p.Description, p.Rating, p.Quantity, p.Cost, i.imagePath from Products as p inner join ProductImage as i on i.productID = p.id")
           while(rs.next()) {
             val name = rs.getString("Name")
             val desc = rs.getString("Description")
@@ -37,9 +37,31 @@ object Home extends Controller {
            products.append(product)
           }
 
+          rs = stmt.executeQuery("select t.CostPerHour, t.Rating, t.Description, t.Height, t.Weight, h.Name as HairColor, t.HasTattoos, u.FirstName from Tutor as t inner join HairColor as h on t.HairColor = h.id inner join Users as u on t.UserID = u.id")
+          
+          while(rs.next()) {
+            val cph = rs.getString("CostPerHour")
+            val rating = rs.getInt("Rating")
+            val desc = rs.getString("Description")
+            val height = rs.getInt("Height")
+            val weight = rs.getInt("Weight")
+            val haircolor = rs.getString("HairColor")
+            val tattoos = rs.getBoolean("HasTattoos")
+            val first = rs.getString("FirstName")
 
+            val tutor: JsValue = Json.obj(
+                 "costPerHour"->cph,
+                 "rating"->rating,
+                 "desc"->desc,
+                 "height"->height,
+                 "weight"->weight,
+                 "hairColor"->haircolor,
+                 "hasTattoos"->tattoos,
+                 "firstName"->first)
+            tutors.append(tutor)
+          }
 
-          response = Json.obj("products"->Json.toJson(products.toSeq))
+          response = Json.obj("products"->Json.toJson(products.toSeq), "tutors"->Json.toJson(tutors.toSeq))
         } finally {
           conn.close()
         }
