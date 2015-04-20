@@ -1,17 +1,10 @@
 <?php
-/**
- * For a running Search Demo see: http://amazonecs.pixel-web.org
- */
- 
-//if ("cli" !== PHP_SAPI)
-//{
-//    echo "<pre>";
-//}
 
 
-if (is_file('sampleSettings.php'))
+
+if (is_file('settings.php'))
 {
-  include 'sampleSettings.php';
+  include 'settings.php';
 }
 
 defined('AWS_API_KEY') or define('AWS_API_KEY', 'API KEY');
@@ -126,9 +119,4 @@ function getResult($searchWord, $category){
 	 echo json_encode($item, JSON_UNESCAPED_SLASHES);
  }
  
- 
-// if ("cli" !== PHP_SAPI)
-//{
-//    echo "</pre>";
-//}
 ?>
