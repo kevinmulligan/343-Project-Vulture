@@ -1,0 +1,15 @@
+2015-04-20 15:52:35,649 - [INFO] - from play in main 
+Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+
+2015-04-20 15:52:45,915 - [INFO] - from play in New I/O  worker #1 
+database [default] connected at jdbc:h2:mem:play
+
+2015-04-20 15:52:46,886 - [INFO] - from play in New I/O  worker #1 
+Application started (Dev)
+
+2015-04-20 15:57:22,140 - [INFO] - from play in New I/O  worker #3 
+database [default] connected at jdbc:h2:mem:play
+
+2015-04-20 15:57:22,162 - [INFO] - from play in New I/O  worker #3 
+Application started (Dev)
+
