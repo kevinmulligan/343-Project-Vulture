@@ -12,7 +12,7 @@ var dailyProduct = {
 var dailyTutor = {
   name:'Susan',
   imageURL:'http://lorempixel.com/100/100/people/',
-  description:'I am a tutor. I can teach you to be dangerious. I\'ve seen things .... seen things no human was ment to see.',
+  description:'I am a tutor. I can teach you to be dangerious. I\'ve seen things .... seen things no human was meant to see.',
   hourly_cost:12.99,
   rating:4
 }
