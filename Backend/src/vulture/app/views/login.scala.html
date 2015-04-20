@@ -1,0 +1,47 @@
+@(form: Form[(String,String)])(implicit flash: Flash)
+
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+         <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+
+        	<header>
+            	<span id="title"> VULTURE </span>
+            </header>
+        
+          <article id="login-field">
+   		Login with username and password	
+        @helper.form(routes.Application.authenticate) {
+            
+            
+ 
+                Username: <input type="text" name="email" placeholder="Username" id="email" value="@form("email").value"> </br>
+
+                Password: <input type="password" name="password" id="password" placeholder="Password"> </br>
+				<br>
+                <input type="submit" id="loginbutton" value="Login">
+
+			@form.globalError.map { error =>
+                <p class="error">
+                    @error.message
+                </p>
+            }
+            
+            @flash.get("success").map { message =>
+                <p class="success">
+                    @message
+                </p>
+            }
+           
+        }
+           </article>
+            
+    </body>
+</html>
+    
+
+

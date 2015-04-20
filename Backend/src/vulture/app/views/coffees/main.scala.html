@@ -1,0 +1,28 @@
+@(content: Html)
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Coffee database</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")"> 
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/Style.css")"> 
+          <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+        <script src="assets/javascripts/main.js" charset="UTF-8"></script>
+    </head>
+    <body>
+        
+  <header>
+		<span id="title" onclick='parent.location="index.html"'> VULTURE </span>
+		<input id="search-bar" type="search" placeholder="Search...">
+		<span id="account-buttons">
+		  Welcome User
+		  <a id='log-in' href="/logout">Log out</a>
+		</span>
+  </header>
+        
+     
+            @content
+    
+        
+    </body>
+</html>

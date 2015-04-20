@@ -1,0 +1,159 @@
+#title {
+  font-weight: bold;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+header {
+  position: relative;
+  top: 0px;
+  width: 750px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 15px;
+  padding-top: 20px;
+}
+
+#search-bar {
+  font-size: 2em;
+  bottom: 0px;
+  width: 400px;
+  border-radius: 3px;
+  border: 1px solid lightgray;
+}
+
+#account-buttons {
+  padding: 1px;
+  vertical-align: 4px;
+}
+
+#sign-up, #log-in, input[type=submit] {
+  text-decoration: none;
+  border-radius: 3px;
+  text-shadow: 1px 1px 1px #222;
+  padding: 8px;
+  margin-left: 10px;
+  font-size: 1.5em;
+  font-weight: bold;
+  background: #00509d;
+  background: -webkit-linear-gradient(#4479bc, #00509d); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#4479bc, #00509d); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#4479bc, #00509d); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#4479bc, #00509d); /* Standard syntax */
+  color: white;
+  border: 0px;
+}
+
+#sign-up:hover, #log-in:hover, button:hover, input[type=submit]:hover {
+  text-shadow: 0px 0px 0px #222;
+  background: #00509d;
+  color: white;
+}
+
+article {
+  max-width: 700px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*********************** TUTOR & PRODUCT *******************************/
+section {
+  width: 700px;
+  margin: 0px auto;
+}
+
+.item {
+  position: relative;
+  height: 100px;
+}
+
+.daily {
+  padding: 1em;
+  margin: 1em 0px;
+  box-shadow: 2px 2px 3px gray;
+  background:rgb(251, 248, 235)
+}
+.item > img {
+  max-height: 100px;
+  min-height: 100px;
+  margin-right: 1em;
+  float:left;
+}
+.daily * > .name {
+  color: white;
+  text-shadow:1px 1px 3px black;
+}
+.name {
+  float:left;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.description {
+  float:right;
+  width: 430px;
+  position: absolute;
+  left: 108px;
+  bottom: 1.5em;
+  overflow: hidden;
+  height: 50px;
+}
+.price, .hourly {
+  text-decoration: none;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  display: block;
+  text-align: center;
+  background: rgb(147, 212, 147);
+  border-radius: 3px;
+  padding: 0.2em 1em;
+  cursor: pointer;
+
+  background: rgb(44, 206, 44);
+  background: -webkit-linear-gradient(rgb(44, 206, 44), rgb(0, 180, 0)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgb(44, 206, 44), rgb(0, 180, 0)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgb(44, 206, 44), rgb(0, 180, 0)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgb(44, 206, 44), rgb(0, 180, 0)); /* Standard syntax */
+  border: 1px solid rgb(102, 211, 101);
+  color: white;
+  text-shadow: 1px 1px 2px rgb(0, 0, 0);
+  box-shadow: 1px 1px 2px black;
+}
+.daily * > .price, .daily * > .hourly {
+  padding: 0.5em 1em;
+}
+.rating {
+  color: #dddd00;
+  position: absolute;
+  bottom: 0px;
+  left: 108px;
+}
+.item + .item {
+  margin: 0.5em 0px;
+  padding: 0.5em 0px;
+  border-top: 1px solid gray;
+}
+.price:hover:active, .hourly:hover:active {
+  background: rgb(0, 180, 0);
+  background: -webkit-linear-gradient(rgb(0, 180, 0), rgb(44, 206, 44)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgb(0, 180, 0), rgb(44, 206, 44)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgb(0, 180, 0), rgb(44, 206, 44)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgb(0, 180, 0), rgb(44, 206, 44)); /* Standard syntax */
+  text-shadow: 0px 0px 0px black;
+}
+.price:hover, .hourly:hover {
+  background: rgb(44, 206, 44);
+}
+.price:before {
+  content:'purchase now \A$';
+  white-space:pre;
+}
+.hourly:before {
+  content:'schedule now \A$';
+  white-space:pre;
+}
+.hourly:after {
+  content:' / hour';
+}
