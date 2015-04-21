@@ -89,6 +89,21 @@ var makeTutor = function(tutor){
   return ele;
 }
 
+var getContent = function(server){
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", server + "/products", true);
+  xhr.send();
+  xhr.onreadystatechange = function(){
+    if (xhr.readyState == 4 || xhr.readyState == 200){
+      // for every product
+      var products = JSON.parse(xhr.ResponseText);
+      for (p in products) {
+        document.getElementsById('items').appendChild(makeProduct());
+      }
+    }
+  };
+}
+
 var documentLoaded = function(){
   document.getElementById('daily-product').appendChild(makeProduct(dailyProduct));
   document.getElementById('daily-tutor').appendChild(makeTutor(dailyTutor));

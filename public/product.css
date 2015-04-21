@@ -83,7 +83,6 @@ section {
   border-radius: 3px;
   padding: 0.2em 1em;
   cursor: pointer;
-  margin-top: 2em;
 
   background: rgb(44, 206, 44);
   background: -webkit-linear-gradient(rgb(44, 206, 44), rgb(0, 180, 0)); /* For Safari 5.1 to 6.0 */
@@ -115,4 +114,14 @@ section {
 #buy:before {
   content:'purchase now \A$';
   white-space:pre;
+}
+#amazon {
+  margin-top: 2em;
+  font-size: 0.95em;
+  font-style: italic;
+}
+.amazon_img {
+  height:40px;
+  float:left;
+  padding-right:1em;
 }
