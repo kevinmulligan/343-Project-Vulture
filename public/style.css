@@ -33,7 +33,11 @@ header {
   vertical-align: 4px;
 }
 
-#sign-up, #log-in, input[type=submit] {
+.form-button {
+  cursor:pointer;
+}
+
+#sign-up, #log-in, input[type=submit], .form-button {
   text-decoration: none;
   border-radius: 3px;
   text-shadow: 1px 1px 1px #222;
@@ -50,7 +54,7 @@ header {
   border: 0px;
 }
 
-#sign-up:hover, #log-in:hover, button:hover, input[type=submit]:hover {
+#sign-up:hover, #log-in:hover, button:hover, input[type=submit]:hover, .form-button:hover {
   text-shadow: 0px 0px 0px #222;
   background: #00509d;
   color: white;

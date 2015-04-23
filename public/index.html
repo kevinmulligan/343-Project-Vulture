@@ -16,12 +16,12 @@
       <a id='sign-up' href="sign-up.html">Join</a>
       <a id='log-in' href="login.html">Log In</a>
     </span>
+    <span id="logged-in" style='display:none;'>
+      <span id='user' style='font-size:1.5em;'></span>
+      <a class='form-button' id='log-out' onclick='localStorage["username"] = ""; window.location.href = ""'>Log Out</a>
+    </span>
   </header>
   <section id="items">
-    <!-- <div id='daily-product' class='daily'>
-    </div>
-    <div id='daily-tutor' class="daily">
-    </div> -->
   </section>
 </body>
 </html>

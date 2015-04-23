@@ -4,6 +4,7 @@
     Vulture
   </title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="js/login.js"></script>
   <!-- Google Fonts! -->
   <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
 </head>
@@ -13,13 +14,14 @@
   </header>
   <article id="login-field">
     Login with username and password
-    <form>
-      username: <input type="text" name="username" placeholder="username">
+    <br>
+    <!-- <form> -->
+      username: <input id="username" type="text" name="username" placeholder="username">
       <br>
-      password: <input type="password" name="password" placeholder="">
+      password: <input id="password" type="password" name="password" placeholder="">
       <br><br>
-      <input type="submit" value="Login">
-    </form>
+      <button class='form-button' onclick="storeValues()">Login</button>
+    <!-- </form> -->
   </article>
 </body>
 </html>

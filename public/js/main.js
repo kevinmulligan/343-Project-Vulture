@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(event) {
   documentLoaded();
+  loadUser();
 });
 
 var server = "http://private-2dd96-vulture.apiary-mock.com";
@@ -110,5 +111,16 @@ var filterResults = function(search){
       console.log('show');
       items[i].style.display = '';
     }
+  }
+}
+
+var loadUser = function(){
+  if (localStorage['username']) {
+    document.getElementById('account-buttons').style.display = 'none';
+    document.getElementById('logged-in').style.display = '';
+    document.getElementById('user').innerHTML = localStorage['username'];
+  } else {
+    document.getElementById('account-buttons').style.display = '';
+    document.getElementById('logged-in').style.display = 'none';
   }
 }
