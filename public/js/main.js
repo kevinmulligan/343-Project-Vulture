@@ -2,20 +2,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   documentLoaded();
 });
 
-var dailyProduct = {
-  name:'cat',
-  imageURL:'http://lorempixel.com/100/100/cats/',
-  description:'For sale. Is extremely dangerious. Useful as guard animal.',
-  price:39.99,
-  rating:5
-};
-var dailyTutor = {
-  name:'Susan',
-  imageURL:'http://lorempixel.com/100/100/people/',
-  description:'I am a tutor. I can teach you to be dangerious. I\'ve seen things .... seen things no human was meant to see.',
-  hourly_cost:12.99,
-  rating:4
-}
+var server = "http://private-2dd96-vulture.apiary-mock.com";
 
 var makeProduct = function(product){
   // pass in a product object, it will create the element for it
@@ -23,7 +10,7 @@ var makeProduct = function(product){
   ele.setAttribute('class','product item');
   // add image
   var img = document.createElement('img');
-  img.setAttribute('src',product.imageURL);
+  img.setAttribute('src',product.imagePath);
   ele.appendChild(img);
   // add name
   var name = document.createElement('span');
@@ -34,7 +21,7 @@ var makeProduct = function(product){
   // add description
   var des = document.createElement('span');
   des.setAttribute('class','description');
-  var desText = document.createTextNode(product.description);
+  var desText = document.createTextNode(product.desc);
   des.appendChild(desText)
   ele.appendChild(des);
   // add rating
@@ -46,7 +33,7 @@ var makeProduct = function(product){
   // add price
   var price = document.createElement('a');
   price.setAttribute('href','product.html?id='+product.id);
-  var priceText = document.createTextNode(product.price);
+  var priceText = document.createTextNode(product.cost);
   price.setAttribute('class','price');
   price.appendChild(priceText);
   ele.appendChild(price);
@@ -59,18 +46,18 @@ var makeTutor = function(tutor){
   ele.setAttribute('class','tutor item');
   // add image
   var img = document.createElement('img');
-  img.setAttribute('src',tutor.imageURL);
+  img.setAttribute('src',tutor.imagePath);
   ele.appendChild(img);
   // add name
   var name = document.createElement('span');
   name.setAttribute('class','name');
-  var nameText = document.createTextNode(tutor.name);
+  var nameText = document.createTextNode(tutor.firstName);
   name.appendChild(nameText);
   ele.appendChild(name);
   // add description
   var des = document.createElement('span');
   des.setAttribute('class','description');
-  var desText = document.createTextNode(tutor.description);
+  var desText = document.createTextNode(tutor.desc);
   des.appendChild(desText)
   ele.appendChild(des);
   // add rating
@@ -82,7 +69,7 @@ var makeTutor = function(tutor){
   // add price
   var price = document.createElement('a');
   price.setAttribute('href','tutor.html?id='+tutor.id);
-  var priceText = document.createTextNode(tutor.hourly_cost);
+  var priceText = document.createTextNode(tutor.costPerHour);
   price.setAttribute('class','hourly');
   price.appendChild(priceText);
   ele.appendChild(price);
@@ -91,24 +78,37 @@ var makeTutor = function(tutor){
 
 var getContent = function(server){
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", server + "/products", true);
+  xhr.open("GET", "http://private-2dd96-vulture.apiary-mock.com/home", true);
   xhr.send();
   xhr.onreadystatechange = function(){
-    if (xhr.readyState == 4 || xhr.readyState == 200){
+    if (xhr.readyState == 4 && xhr.status == 200){
       // for every product
-      var products = JSON.parse(xhr.ResponseText);
-      for (p in products) {
-        document.getElementsById('items').appendChild(makeProduct());
+      var items = JSON.parse(xhr.response);
+      for (p in items.products) {
+        items.products[p].id = p;
+        document.getElementById('items').appendChild(makeProduct(items.products[p]));
+      }
+      for (t in items.tutors) {
+        items.tutors[t].id = t;
+        document.getElementById('items').appendChild(makeTutor(items.tutors[t]));
       }
     }
   };
 }
 
 var documentLoaded = function(){
-  document.getElementById('daily-product').appendChild(makeProduct(dailyProduct));
-  document.getElementById('daily-tutor').appendChild(makeTutor(dailyTutor));
-  document.getElementById('items').appendChild(makeProduct(dailyProduct));
-  document.getElementById('items').appendChild(makeProduct(dailyProduct));
-  document.getElementById('items').appendChild(makeTutor(dailyTutor));
-  document.getElementById('items').appendChild(makeProduct(dailyProduct));
+  getContent(server);
+}
+
+var filterResults = function(search){
+  var items = document.querySelectorAll('.item');
+  for (var i = 0; i < items.length; i++) {
+    if (items[i].innerText.toLowerCase().indexOf(search.toLowerCase()) == -1){
+      console.log('hide');
+      items[i].style.display = 'none';
+    } else {
+      console.log('show');
+      items[i].style.display = '';
+    }
+  }
 }

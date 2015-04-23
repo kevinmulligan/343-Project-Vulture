@@ -3,25 +3,28 @@
   <title>
     Vulture
   </title>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="js/main.js" charset="UTF-8"></script>
+  <link rel="stylesheet" type="text/css" href="item.css">
+  <script src="js/load_tutor.js" charset="UTF-8"></script>
   <!-- Google Fonts! -->
   <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <header>
     <span id="title" onclick='parent.location="index.html"'> VULTURE </span>
-    <input id="search-bar" type="search" placeholder="Search..." oninput="filterResults(value)">
+    <input id="search-bar" type="search" placeholder="Search...">
     <span id="account-buttons">
       <a id='sign-up' href="sign-up.html">Join</a>
       <a id='log-in' href="login.html">Log In</a>
     </span>
   </header>
-  <section id="items">
-    <!-- <div id='daily-product' class='daily'>
+  <section id="product">
+    <img id='image'></img>
+    <span id='name'></span>
+    <div id='description'>
+      <span id='rating'></span>
     </div>
-    <div id='daily-tutor' class="daily">
-    </div> -->
+    <div id='amazon'></div>
+    <div id='schedule'></div>
   </section>
 </body>
 </html>

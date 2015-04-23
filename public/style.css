@@ -81,7 +81,7 @@ section {
 }
 .item > img {
   max-height: 100px;
-  min-height: 100px;
+  max-width: 100px;
   margin-right: 1em;
   float:left;
 }
