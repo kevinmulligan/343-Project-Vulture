@@ -16,6 +16,10 @@
       <a id='sign-up' href="sign-up.html">Join</a>
       <a id='log-in' href="login.html">Log In</a>
     </span>
+    <span id="logged-in" style='display:none;'>
+      <span id='user' style='font-size:1.5em;'></span>
+      <a class='form-button' id='log-out' onclick='localStorage["username"] = ""; window.location.href = ""'>Log Out</a>
+    </span>
   </header>
   <section id="product">
     <img id='image'></img>
@@ -52,7 +56,7 @@
       <tr><th>10 PM</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td> </tr>
       <tr><th>11 PM</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td> </tr>
     </table>
-    <div id='request' class="disable"></div>
+    <div id='request' class="disable" onclick="requestSchedule()"></div>
   </section>
 </body>
 </html>

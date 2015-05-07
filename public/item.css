@@ -171,6 +171,9 @@ section {
 .open-hour {
   background: white;
 }
+.pending-hour {
+  background: rgb(150,150,255);
+}
 .blocked-hour{
   background: rgb(140, 140, 140);
 }

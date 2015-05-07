@@ -29,6 +29,7 @@ function parseURLParams(url) {
 document.addEventListener("DOMContentLoaded", function(event) {
   var urlParams = parseURLParams(window.location.href);
   documentLoaded(urlParams); // load the id of the object into the
+  loadUser();
 });
 
 var loadTutor = function(urlParams){
@@ -84,8 +85,18 @@ function tutorScheduleToPage(tutorSchedule) {
       for (var hour = openSlot.hour; hour < (openSlot.length + openSlot.hour); hour++){
         scheduleTable.rows[hour+1].cells[day+1].classList.remove('blocked-hour');
         scheduleTable.rows[hour+1].cells[day+1].classList.add('open-hour');
+        scheduleTable.rows[hour+1].cells[day+1].id = hour + " " + day;
       }
     }
+  }
+  var pending = localStorage[document.getElementById('user').innerHTML].split(',');
+  if (pending[0] == ""){ return null; }
+  for (var i = 0; i < pending.length; i++){
+    var r = Number(pending[i].split(' ')[0]);
+    var c = Number(pending[i].split(' ')[1]);
+    scheduleTable.rows[r+1].cells[c+1].classList.remove('open-hour');
+    scheduleTable.rows[r+1].cells[c+1].classList.add('pending-hour');
+    console.log(r,c)
   }
 }
 
@@ -121,7 +132,28 @@ function updateRequestButton(){
   }
 }
 
+function requestSchedule(){
+  var rh = [];
+  var requests = document.getElementsByClassName('request-hour');
+  for (var i = 0; i < requests.length; i++){
+    rh.push(requests[i].id);
+  }
+  localStorage[document.getElementById('name').innerHTML] = rh;
+}
+
 var documentLoaded = function(urlParams){
   loadTutor(urlParams);
   loadSchedule(urlParams);
+}
+
+
+var loadUser = function(){
+  if (localStorage['username']) {
+    document.getElementById('account-buttons').style.display = 'none';
+    document.getElementById('logged-in').style.display = '';
+    document.getElementById('user').innerHTML = localStorage['username'];
+  } else {
+    document.getElementById('account-buttons').style.display = '';
+    document.getElementById('logged-in').style.display = 'none';
+  }
 }

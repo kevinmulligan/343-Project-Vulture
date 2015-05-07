@@ -61,6 +61,7 @@ function loadRandomAmazonProduct(product){
 document.addEventListener("DOMContentLoaded", function(event) {
   var urlParams = parseURLParams(window.location.href);
   documentLoaded(urlParams); // load the id of the object into the
+  loadUser();
 });
 
 var loadProduct = function(urlParams){
@@ -89,4 +90,16 @@ function productToPage(product) {
 
 var documentLoaded = function(urlParams){
   loadProduct(urlParams);
+}
+
+
+var loadUser = function(){
+  if (localStorage['username']) {
+    document.getElementById('account-buttons').style.display = 'none';
+    document.getElementById('logged-in').style.display = '';
+    document.getElementById('user').innerHTML = localStorage['username'];
+  } else {
+    document.getElementById('account-buttons').style.display = '';
+    document.getElementById('logged-in').style.display = 'none';
+  }
 }
