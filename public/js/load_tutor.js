@@ -71,7 +71,6 @@ function tutorToPage(tutor) {
 function tutorScheduleToPage(tutorSchedule) {
   var scheduleTable = document.getElementById('schedule');
   // make the whole schedule unavalible
-  console.log(scheduleTable.rows.length)
   for (var row = 1; row < scheduleTable.rows.length; row++){
     for (var column = 1; column < scheduleTable.rows[row].cells.length; column++){
       scheduleTable.rows[row].cells[column].classList.add('blocked-hour');
