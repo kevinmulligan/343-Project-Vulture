@@ -76,7 +76,7 @@ section {
 }
 #description {
 }
-#buy, #schedule {
+#buy, #request {
   display: block;
   text-align: center;
   background: rgb(147, 212, 147);
@@ -100,7 +100,7 @@ section {
   bottom: 0px;
   left: 108px;
 }
-#buy:hover:active, #schedule:hover:active {
+#buy:hover:active, #request:hover:active {
   background: rgb(0, 180, 0);
   background: -webkit-linear-gradient(rgb(0, 180, 0), rgb(44, 206, 44)); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(rgb(0, 180, 0), rgb(44, 206, 44)); /* For Opera 11.1 to 12.0 */
@@ -108,7 +108,7 @@ section {
   background: linear-gradient(rgb(0, 180, 0), rgb(44, 206, 44)); /* Standard syntax */
   text-shadow: 0px 0px 0px black;
 }
-#buy:hover, #schedule:hover {
+#buy:hover, #request:hover {
   text-shadow: 0px 0px 0px black;
   background: rgb(0, 180, 0);
 }
@@ -116,11 +116,11 @@ section {
   content:'purchase now \A$';
   white-space:pre;
 }
-#schedule:before {
+#request:before {
   content:'request to schedule now \A$';
   white-space:pre;
 }
-#schedule:after {
+#request:after {
   content:' per hour';
 }
 #amazon {
@@ -136,4 +136,15 @@ section {
   height:40px;
   float:left;
   padding-right:1em;
+}
+
+
+#schedule {
+  border-collapse: collapse;
+  margin: 10px;
+}
+#schedule * td, #schedule * th{
+  width: 85px;
+  border: 2px solid rgb(190, 190, 190);
+  padding: 0px;
 }

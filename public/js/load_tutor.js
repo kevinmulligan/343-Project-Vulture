@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   documentLoaded(urlParams); // load the id of the object into the
 });
 
-var loadProduct = function(urlParams){
+var loadTutor = function(urlParams){
   var id = urlParams.id[0];
   var xhr = new XMLHttpRequest();
   xhr.open("GET", server + "/tutor/"+id, true);
@@ -44,6 +44,19 @@ var loadProduct = function(urlParams){
   }
 }
 
+var loadSchedule = function(urlParams){
+  var id = urlParams.id[0];
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", server + "/tutor/schedule/" + id, true);
+  xhr.send();
+  xhr.onreadystatechange = function(){
+    if (xhr.readyState == 4 || xhr.readyState == 200){
+      schedule = JSON.parse(xhr.responseText);
+      tutorScheduleToPage(schedule);
+    }
+  }
+}
+
 function tutorToPage(tutor) {
   document.getElementById('image').setAttribute('src',tutor.imagePath);
   document.getElementById('name').appendChild(document.createTextNode(tutor.firstName));
@@ -51,9 +64,35 @@ function tutorToPage(tutor) {
     document.createTextNode(new Array( Number(tutor.rating) + 1 ).join('★') + " " + tutor.rating + "/5")
   );
   document.getElementById('description').appendChild(document.createTextNode(tutor.desc));
-  document.getElementById('schedule').appendChild(document.createTextNode(tutor.costPerHour));
+  document.getElementById('request').appendChild(document.createTextNode(tutor.costPerHour));
+}
+
+
+function tutorScheduleToPage(tutorSchedule) {
+  console.log(tutorSchedule);
+}
+
+var mouse = 0;
+var add = false;
+
+function dateSelect(e){
+  if (mouse > 0) {
+    if (add){
+      e.target.style.background = 'rgb(94, 238, 94)';
+    } else {
+      e.target.style.background = '';
+    }
+  }
+}
+
+function mouseDown(e, value){
+  if(e.preventDefault) e.preventDefault();
+  mouse = value;
+  add = e.target.style.background == '';
+  dateSelect(e);
 }
 
 var documentLoaded = function(urlParams){
-  loadProduct(urlParams);
+  loadTutor(urlParams);
+  loadSchedule(urlParams);
 }
