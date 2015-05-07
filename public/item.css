@@ -123,6 +123,11 @@ section {
 #request:after {
   content:' per hour';
 }
+#request.disable {
+  background: rgb(155,155,155);
+  border: 0px solid black;
+  color: rgb(230, 230, 230);
+}
 #amazon {
   margin-top: 2em;
   font-size: 0.95em;
@@ -143,8 +148,18 @@ section {
   border-collapse: collapse;
   margin: 10px;
 }
+
 #schedule * td, #schedule * th{
   width: 85px;
   border: 2px solid rgb(190, 190, 190);
   padding: 0px;
+}
+.request-hour {
+  background: rgb(94, 238, 94);
+}
+.open-hour {
+  background: white;
+}
+.blocked-hour{
+  background: rgb(140, 140, 140);
 }
